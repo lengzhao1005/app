@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);//数据库编码问题
+        \Carbon\Carbon::setLocale('zh');
     }
 
     /**
