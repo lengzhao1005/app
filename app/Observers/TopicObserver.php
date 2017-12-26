@@ -6,7 +6,7 @@
  * Time: 17:28
  */
 
-namespace App\Observer;
+namespace App\Observers;
 
 
 use App\Models\Topics;
