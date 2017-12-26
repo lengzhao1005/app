@@ -14,8 +14,13 @@ class TopicPolicy
      *
      * @return void
      */
-    public function __construct()
+    public function update(User $user, Topic $topic)
     {
-        //
+        return $user->id === $topic->user_id;
+    }
+
+    public function destroy(User $user, Topic $topic)
+    {
+        return $user->id === $topic->user_id;
     }
 }
