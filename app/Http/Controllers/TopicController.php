@@ -20,7 +20,7 @@ class TopicController extends Controller
 
     public function index(Request $request, Topics $topic, User $user)
     {
-        $topics = $topic->with('user','category')->paginate(20);
+        $topics = $topic->withOrder($request->order)->paginate(20);
         //dd($topics);
         //$active_users = $user->getActiveUsers();
         return view('topics.index',compact('topics'));
