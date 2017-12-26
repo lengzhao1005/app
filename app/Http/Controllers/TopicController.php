@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TopicRequest;
 use App\Models\Topics;
+use App\Moldes\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Auth;
 use App\Handlers\ImageUploadHandler;
 use App\Models\User;
-use App\Models\Link;
 
 class TopicController extends Controller
 {
@@ -26,7 +26,7 @@ class TopicController extends Controller
         return view('topics.index',compact('topics'));
     }
 
-    public function show(Request $request, Topic $topic)
+    public function show(Request $request, Topics $topic)
     {
         // URL 矫正
         if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
@@ -36,19 +36,19 @@ class TopicController extends Controller
         return view('topics.show', compact('topic'));
     }
 
-    public function create(Topic $topic)
+    public function create(Topics $topic)
     {
         $categories = Category::all();
         return view('topics.create_and_edit', compact('topic', 'categories'));
     }
 
-    public function store(TopicRequest $request, Topic $topic)
+    public function store(TopicRequest $request, Topics $topic)
     {
         $topic->fill($request->all());
         $topic->user_id = Auth::id();
         $topic->save();
 
-        return redirect()->to($topic->link())->with('success', '成功创建主题！');
+        return redirect()->route('topics.show',$topic->id)->with('success', '成功创建主题！');
     }
 
     public function edit(Topic $topic)

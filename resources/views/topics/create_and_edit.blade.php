@@ -67,12 +67,12 @@
     <script type="text/javascript"  src="{{ asset('js/uploader.js') }}"></script>
     <script type="text/javascript"  src="{{ asset('js/simditor.js') }}"></script>
 
-    <script>
+{{--    <script>
     $(document).ready(function(){
         var editor = new Simditor({
             textarea: $('#editor'),
             upload: {
-                url: '{{ route('topics.upload_image') }}',
+                url: '/',
                 params: { _token: '{{ csrf_token() }}' },
                 fileKey: 'upload_file',
                 connectionCount: 3,
@@ -81,6 +81,6 @@
             pasteImage: true,
         });
     });
-    </script>
+    </script>--}}
 
 @stop
