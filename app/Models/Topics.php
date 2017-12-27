@@ -17,4 +17,9 @@ class Topics extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function link($param = [])
+    {
+        return route('topics.show',array_merge([$this->id,$this->slug],$param));
+    }
 }

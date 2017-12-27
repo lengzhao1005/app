@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Handlers\SlugTranslateHandler;
 use App\Http\Requests\TopicRequest;
 use App\Models\Topics;
 use App\Moldes\Category;
@@ -32,7 +33,6 @@ class TopicController extends Controller
         /*if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
             return redirect($topic->link(), 301);
         }*/
-
         return view('topics.show', compact('topic'));
     }
 
@@ -48,7 +48,7 @@ class TopicController extends Controller
         $topic->user_id = Auth::id();
         $topic->save();
 
-        return redirect()->route('topics.show',$topic->id)->with('success', '成功创建主题！');
+        return redirect()->route($topic->link())->with('success', '成功创建主题！');
     }
 
     public function edit(Topics $topic)
@@ -64,7 +64,7 @@ class TopicController extends Controller
         $this->authorize('update', $topic);
         $topic->update($request->all());
 
-        return redirect()->route('topics.show',$topic->id)->with('success', '更新成功！');
+        return redirect()->route($topic->link())->with('success', '更新成功！');
     }
 
     public function destroy(Topics $topic)
