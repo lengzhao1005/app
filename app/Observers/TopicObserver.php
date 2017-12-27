@@ -16,5 +16,7 @@ class TopicObserver
     public function saving(Topics $topics)
     {
         $topics->excerpt = nake_excerpt($topics->body);
+
+        $topics->body = clean($topics->body,'default');
     }
 }
