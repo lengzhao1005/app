@@ -32,7 +32,6 @@ class TopicController extends Controller
         if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
             return redirect($topic->link(), 301);
         }
-
         return view('topics.show', compact('topic'));
     }
 
@@ -58,7 +57,7 @@ class TopicController extends Controller
         return view('topics.create_and_edit', compact('topic', 'categories'));
     }
 
-    public function update(TopicRequest $request, Topic $topic)
+    public function update(TopicRequest $request, Topics $topic)
     {
         $this->authorize('update', $topic);
         $topic->update($request->all());

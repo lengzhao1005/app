@@ -22,4 +22,9 @@ class Topics extends Model
     {
         return route('topics.show',array_merge([$this->id,$this->slug],$param));
     }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class,'topic_id','id');
+    }
 }

@@ -36,3 +36,5 @@ Route::get('topics/{topic}/{slug?}', 'TopicController@show')->name('topics.show'
 Route::post('upload_image','TopicController@imageUpload')->name('topics.upload_image');
 
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+
+Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
