@@ -10,6 +10,7 @@ namespace App\Observers;
 
 
 use App\Models\Reply;
+use App\Notifications\TopicReply;
 
 class ReplyObserver
 {
@@ -21,5 +22,11 @@ class ReplyObserver
     public function created(Reply $reply)
     {
         $reply->topic->increment('reply_count',1);
+
+        $topic = $reply->topic;
+
+        if($reply->user->id ){
+            $topic->user->notify(new TopicReply($reply));
+        }
     }
 }

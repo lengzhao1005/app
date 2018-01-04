@@ -17,11 +17,11 @@ class TopicPolicy
      */
     public function update(User $user, Topics $topic)
     {
-        return $user->id === $topic->user_id;
+        return $user->isAuthOf($topic);
     }
 
     public function destroy(User $user, Topics $topic)
     {
-        return $user->id === $topic->user_id;
+        return $user->isAuthOf($topic);
     }
 }
