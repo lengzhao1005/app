@@ -12,7 +12,7 @@ class HlalaController extends Controller
         $access_token = $this->getHualalaToken();
         $secret = 'YJV3nQMt';
         $ordder_list = $this->getOrderList($access_token,$secret);
-
+        dd($ordder_list);
     }
 
     public function getHualalaToken()
