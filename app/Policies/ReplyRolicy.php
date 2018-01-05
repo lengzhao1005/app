@@ -12,6 +12,6 @@ class ReplyRolicy
 
     public function destory(User $current_user, Reply $reply)
     {
-        return $current_user->isAuthOf($reply);
+        return $current_user->isAuthOf($reply) || $current_user->isAuthOf($reply->topic);
     }
 }
