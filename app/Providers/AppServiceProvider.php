@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);//数据库编码问题
         \Carbon\Carbon::setLocale('zh');
+
     }
 
     /**
@@ -35,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (app()->isLocal()) {
+            $this->app->register('VIACreative\SudoSu\ServiceProvider');
+        }
     }
 }

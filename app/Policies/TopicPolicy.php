@@ -6,7 +6,7 @@ use App\Models\Topics;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class TopicPolicy
+class TopicPolicy extends BasePolicy
 {
     use HandlesAuthorization;
 

@@ -6,7 +6,7 @@ use App\Models\Reply;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ReplyRolicy
+class ReplyRolicy extends BasePolicy
 {
     use HandlesAuthorization;
 
