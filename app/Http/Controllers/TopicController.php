@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TopicRequest;
 use App\Models\Topics;
 use App\Moldes\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -20,10 +21,10 @@ class TopicController extends Controller
 
     public function index(Request $request, Topics $topic, User $user)
     {
+        $active_users = $user->getActiveUsers();
         $topics = $topic->withOrder($request->order)->paginate(20);
-        //dd($topics);
-        //$active_users = $user->getActiveUsers();
-        return view('topics.index',compact('topics'));
+
+        return view('topics.index',compact('topics','active_users'));
     }
 
     public function show(Request $request, Topics $topic)

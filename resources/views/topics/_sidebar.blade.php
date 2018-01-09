@@ -6,7 +6,6 @@
     </div>
 </div>
 
-{{--
 @if (count($active_users))
     <div class="panel panel-default">
         <div class="panel-body active-users">
@@ -29,7 +28,7 @@
     </div>
 @endif
 
-@if (count($links))
+{{--@if (count($links))
     <div class="panel panel-default">
         <div class="panel-body active-users">
 
