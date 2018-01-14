@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TopicRequest;
+use App\Models\Link;
 use App\Models\Topics;
 use App\Moldes\Category;
 use Carbon\Carbon;
@@ -24,7 +25,9 @@ class TopicController extends Controller
         $active_users = $user->getActiveUsers();
         $topics = $topic->withOrder($request->order)->paginate(20);
 
-        return view('topics.index',compact('topics','active_users'));
+        $links = Link::get();
+
+        return view('topics.index',compact('topics','active_users','links'));
     }
 
     public function show(Request $request, Topics $topic)

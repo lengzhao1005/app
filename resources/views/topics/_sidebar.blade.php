@@ -28,7 +28,7 @@
     </div>
 @endif
 
-{{--@if (count($links))
+@if (count($links))
     <div class="panel panel-default">
         <div class="panel-body active-users">
 
@@ -44,4 +44,4 @@
 
         </div>
     </div>
-@endif--}}
+@endif
