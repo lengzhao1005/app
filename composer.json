@@ -18,7 +18,8 @@
         "predis/predis": "^1.1",
         "spatie/laravel-permission": "^2.7",
         "summerblue/administrator": "~1.1",
-        "viacreative/sudo-su": "~1.1"
+        "viacreative/sudo-su": "~1.1",
+        "workerman/gateway-worker": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
