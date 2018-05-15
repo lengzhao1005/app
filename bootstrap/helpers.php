@@ -51,3 +51,4 @@ function model_plural_name($model)
     // 获取子串的复数形式，例如：传参 `user` 会得到 `users`
     return str_plural($snake_case_name);
 }
+

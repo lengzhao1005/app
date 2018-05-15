@@ -9,6 +9,7 @@ class HlalaController extends Controller
 {
     public function index()
     {
+        dd(now()->addMinute(10));
         $access_token = $this->getHualalaToken();
         $secret = 'YJV3nQMt';
         $ordder_list = $this->getOrderList($access_token,$secret);

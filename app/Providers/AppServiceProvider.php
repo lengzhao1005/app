@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
 use App\Observers\UserObserver;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);//数据库编码问题
         \Carbon\Carbon::setLocale('zh');
-
     }
 
     /**
@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (app()->isLocal()) {
+        if (config('app.debug')) {
             $this->app->register('VIACreative\SudoSu\ServiceProvider');
         }
     }

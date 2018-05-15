@@ -53,6 +53,20 @@ return [
             'strict' => true,
             'engine' => null,
         ],
+        'mysql_yinzun' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST_yinzun', '47.96.18.13'),
+            'port' => env('DB_PORT_yinzun', '3306'),
+            'database' => env('DB_DATABASE_yinzun', 'payview'),
+            'username' => env('DB_USERNAME_yinzun', 'seven'),
+            'password' => env('DB_PASSWORD_yinzun', 'zjYinZhun@aa38fG#8&3g_W'),
+            'unix_socket' => env('DB_SOCKET_yinzun', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',

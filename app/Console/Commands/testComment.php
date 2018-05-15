@@ -2,24 +2,23 @@
 
 namespace App\Console\Commands;
 
-use App\Models\User;
 use Illuminate\Console\Command;
 
-class SyncUserActiveAt extends Command
+class testComment extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'laravel:sync-user-active-at';
+    protected $signature = 'test:action {action}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '将用户最后活跃时间从Redis同步到mysql';
+    protected $description = '测试';
 
     /**
      * Create a new command instance.
@@ -36,9 +35,17 @@ class SyncUserActiveAt extends Command
      *
      * @return mixed
      */
-    public function handle(User $user)
+    public function handle()
     {
-        $user->syncUserActiveAt();
-        $this->info('同步成功');
+        $action = $this->argument('action');
+        switch ($action){
+            case 'start':
+                $this->actionStart();
+        }
+    }
+
+    private function actionStart()
+    {
+        echo 'start';
     }
 }

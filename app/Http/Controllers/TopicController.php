@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Handlers\ImageUploadHandler;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class TopicController extends Controller
 {
@@ -22,10 +23,24 @@ class TopicController extends Controller
 
     public function index(Request $request, Topics $topic, User $user)
     {
+
         $active_users = $user->getActiveUsers();
         $topics = $topic->withOrder($request->order)->paginate(20);
 
         $links = Link::get();
+        //$data = serialize([''])
+        //\Redis::hSet('prize_1','user_1',time());
+        /*\Redis::hSet('prize_1','user_2',time());
+        \Redis::hSet('prize_3','user_3',time());
+        \Redis::hSet('prize_4','user_4',time());
+
+        dump(\Redis::hDel('prize_1','user_2'));
+
+        //foreach ()
+        \Redis::sAdd('5','100','10');
+        \Redis::sMembers('5');
+        dd(\Redis::sMembers('5'));*/
+
 
         return view('topics.index',compact('topics','active_users','links'));
     }
@@ -36,6 +51,9 @@ class TopicController extends Controller
         if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
             return redirect($topic->link(), 301);
         }
+
+        $res = $topic->update(['title'=>'test']);
+
         return view('topics.show', compact('topic'));
     }
 
