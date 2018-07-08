@@ -23,7 +23,7 @@ class TopicController extends Controller
 
     public function index(Request $request, Topics $topic, User $user)
     {
-
+/*dd(base64_decode(base64_decode('ZXlKaGNIQnBaQ0k2SW1Gd2NHbGtNU0lzSW1Gd2NITmxZM0psZENJNkltRndjSE5sWTNKbGRERWlmUT09')));*/
         $active_users = $user->getActiveUsers();
         $topics = $topic->withOrder($request->order)->paginate(20);
 
