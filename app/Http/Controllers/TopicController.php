@@ -23,7 +23,9 @@ class TopicController extends Controller
 
     public function index(Request $request, Topics $topic, User $user)
     {
-/*dd(base64_decode(base64_decode('ZXlKaGNIQnBaQ0k2SW1Gd2NHbGtNU0lzSW1Gd2NITmxZM0psZENJNkltRndjSE5sWTNKbGRERWlmUT09')));*/
+        dump(base64_decode('opCkYmPT5atVjn0MdUjhs1BSfcnSeuJG0byvmnyQ2Ck'));
+        dump(base64_decode('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9'));
+        dd(base64_decode('eyJpc3MiOiJodHRwOlwvXC9zdW1tZXIudGVzdCIsImlhdCI6MTUzMTY0MzY2NiwiZXhwIjoxNTMxNjQ3MjY2LCJuYmYiOjE1MzE2NDM2NjYsImp0aSI6IkVJZEVCQjE4SXJJNzNUdWEiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ'));
         $active_users = $user->getActiveUsers();
         $topics = $topic->withOrder($request->order)->paginate(20);
 
