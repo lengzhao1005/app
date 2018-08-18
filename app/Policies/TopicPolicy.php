@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Topics;
+use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -15,12 +15,12 @@ class TopicPolicy extends BasePolicy
      *
      * @return void
      */
-    public function update(User $user, Topics $topic)
+    public function update(User $user, Topic $topic)
     {
         return $user->isAuthOf($topic);
     }
 
-    public function destroy(User $user, Topics $topic)
+    public function destroy(User $user, Topic $topic)
     {
         return $user->isAuthOf($topic);
     }

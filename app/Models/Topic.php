@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Moldes\Category;
 
-class Topics extends Model
+class Topic extends Model
 {
     protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
 

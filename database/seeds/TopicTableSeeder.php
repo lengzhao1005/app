@@ -17,7 +17,7 @@ class TopicTableSeeder extends Seeder
 
         $faker = app(Faker\Generator::class);
 
-        $topics = factory(\App\Models\Topics::class)
+        $topics = factory(\App\Models\Topic::class)
                 ->times(100)
                 ->make()
                 ->each(function($topic,$index) use($faker,$user_ids,$categories_ids){
@@ -25,6 +25,6 @@ class TopicTableSeeder extends Seeder
                     $topic->category_id = $faker->randomElement($categories_ids);
                 });
 
-        \App\Models\Topics::insert($topics->toArray());
+        \App\Models\Topic::insert($topics->toArray());
     }
 }

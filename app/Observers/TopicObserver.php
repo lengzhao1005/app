@@ -11,25 +11,25 @@ namespace App\Observers;
 
 use App\Handlers\SlugTranslateHandler;
 use App\Jobs\TranslateSlug;
-use App\Models\Topics;
+use App\Models\Topic;
 
 class TopicObserver
 {
-    public function saving(Topics $topics)
+    public function saving(Topic $topics)
     {
         $topics->excerpt = nake_excerpt($topics->body);
 
         $topics->body = clean($topics->body,'default');
     }
 
-    public function saved(Topics $topics)
+    public function saved(Topic $topics)
     {
         if(!$topics->slug){
             dispatch(new TranslateSlug($topics));
         }
     }
 
-    public function deleted(Topics $topics)
+    public function deleted(Topic $topics)
     {
         \DB::table('replies')->where('topic_id',$topics->id)->delete();
     }

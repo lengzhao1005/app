@@ -14,6 +14,6 @@ class Reply extends Model
 
     public function topic()
     {
-        return $this->belongsTo(Topics::class,'topic_id','id');
+        return $this->belongsTo(Topic::class,'topic_id','id');
     }
 }

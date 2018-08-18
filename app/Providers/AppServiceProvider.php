@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Reply;
-use App\Models\Topics;
+use App\Models\Topic;
 use App\Models\User;
 use App\Observers\ReplyObserver;
 use App\Observers\TopicObserver;
@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Topics::observe(TopicObserver::class);
+        Topic::observe(TopicObserver::class);
         User::observe(UserObserver::class);
         Reply::observe(ReplyObserver::class);
 

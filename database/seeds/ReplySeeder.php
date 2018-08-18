@@ -15,7 +15,7 @@ class ReplySeeder extends Seeder
 
         $user_ids = \App\Models\User::all()->pluck('id')->toArray();
 
-        $topic_ids = \App\Models\Topics::all()->pluck('id')->toArray();
+        $topic_ids = \App\Models\Topic::all()->pluck('id')->toArray();
 
         $replys = factory(\App\Models\Reply::class)
                     ->times(1000)

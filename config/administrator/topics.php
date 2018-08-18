@@ -4,7 +4,7 @@
 return [
     'title'   => '话题',
     'single'  => '话题',
-    'model'   => \App\Models\Topics::class,
+    'model'   => \App\Models\Topic::class,
 
     'columns' => [
 

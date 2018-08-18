@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Reply;
-use App\Models\Topics;
+use App\Models\Topic;
 use App\Models\User;
 use App\Policies\ReplyRolicy;
 use App\Policies\TopicPolicy;
@@ -21,7 +21,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         User::class => UserPolicy::class,
-        Topics::class=>TopicPolicy::class,
+        Topic::class=>TopicPolicy::class,
         Reply::class => ReplyRolicy::class,
     ];
 

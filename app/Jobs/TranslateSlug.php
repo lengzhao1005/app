@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Handlers\SlugTranslateHandler;
-use App\Models\Topics;
+use App\Models\Topic;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -21,7 +21,7 @@ class TranslateSlug implements ShouldQueue
      *
      * @return void
      */
-    public function __construct(Topics $topic)
+    public function __construct(Topic $topic)
     {
         $this->topic = $topic;
     }

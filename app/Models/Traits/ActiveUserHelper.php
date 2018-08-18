@@ -9,7 +9,7 @@
 namespace App\Models\Traits;
 
 use App\Models\Reply;
-use App\Models\Topics;
+use App\Models\Topic;
 use Cache;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -83,7 +83,7 @@ trait ActiveUserHelper
 
     private function calculateTopicScore()
     {
-        $topic_users = Topics::query()->select(DB::raw('user_id,count(*) as topic_count'))
+        $topic_users = Topic::query()->select(DB::raw('user_id,count(*) as topic_count'))
                                       ->where('created_at','>=',Carbon::now()->subDay($this->pass_days))
                                       ->groupBy('user_id')
                                       ->get();
