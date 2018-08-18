@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use App\Handlers\ImageUploadHandler;
 use App\Models\User;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\DB;
 
 class TopicController extends Controller
@@ -23,23 +24,16 @@ class TopicController extends Controller
 
     public function index(Request $request, Topic $topic, User $user)
     {
+        /*$data = ['email'=>'1968912619@qq.com', 'name'=>'lz', 'uid'=>'12', 'activationcode'=>'1234'];
+        $res = \Mail::send('activemail', $data, function($message) use($data)
+        {
+            $message->to($data['email'], $data['name'])->subject('欢迎注册我们的网站，请激活您的账号！');
+        });
+        dd($res);*/
         $active_users = $user->getActiveUsers();
         $topics = $topic->withOrder($request->order)->paginate(20);
 
         $links = Link::get();
-        //$data = serialize([''])
-        //\Redis::hSet('prize_1','user_1',time());
-        /*\Redis::hSet('prize_1','user_2',time());
-        \Redis::hSet('prize_3','user_3',time());
-        \Redis::hSet('prize_4','user_4',time());
-
-        dump(\Redis::hDel('prize_1','user_2'));
-
-        //foreach ()
-        \Redis::sAdd('5','100','10');
-        \Redis::sMembers('5');
-        dd(\Redis::sMembers('5'));*/
-
 
         return view('topics.index',compact('topics','active_users','links'));
     }

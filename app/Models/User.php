@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Traits\ActiveUserHelper;
 use App\Models\Traits\LastActiveAtHelper;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
@@ -47,7 +48,9 @@ class User extends Authenticatable implements JWTSubject
             return;
         }
         $this->increment('notification_count');
+
         $this->laravelNotification($instance);
+
     }
 
     public function markAsRead()
