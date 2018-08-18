@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Models\Traits\ActiveUserHelper;
 use App\Models\Traits\LastActiveAtHelper;
-use Dingo\Api\Routing\Helpers;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;

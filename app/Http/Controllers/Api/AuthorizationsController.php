@@ -89,13 +89,13 @@ class AuthorizationsController extends Controller
 
     public function update()
     {
-        $token = Auth::guard('api')->refresh();
+        $token = \Auth::guard('api')->refresh();
         return $this->responseWithToken($token);
     }
 
     public function destory()
     {
-        Auth::guard('api')->logout();
+        \Auth::guard('api')->logout();
         return $this->response->noContent();
     }
 }
