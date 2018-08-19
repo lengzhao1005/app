@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -15,6 +16,7 @@ class User extends Authenticatable implements JWTSubject
 {
     use LastActiveAtHelper;
     use HasRoles,ActiveUserHelper;
+    use HasApiTokens;
 
     use Notifiable {
         notify as protected laravelNotification;
@@ -91,5 +93,14 @@ class User extends Authenticatable implements JWTSubject
     public function isAuthOf($model)
     {
         return $this->id === $model->user_id;
+    }
+
+    public function findForPassport($username)
+    {
+        filter_var($username, FILTER_VALIDATE_EMAIL) ?
+            $credentials['email'] = $username :
+            $credentials['phone'] = $username;
+
+        return self::where($credentials)->first();
     }
 }
